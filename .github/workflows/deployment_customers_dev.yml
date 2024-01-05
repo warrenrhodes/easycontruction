@@ -2,10 +2,6 @@ name: Deployment Customers (DEV)
 on:
   workflow_call:
 
-concurrency: 
-  group: deploy-fe-customers-dev
-  cancel-in-progress: true
-
 jobs:
   customers:
     runs-on: [Linux]
