@@ -1,4 +1,3 @@
-name: Deployment Customers (DEV)
 on:
   workflow_call:
   
