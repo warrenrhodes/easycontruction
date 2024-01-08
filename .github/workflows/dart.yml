@@ -2,10 +2,15 @@ name: Deployment Frontend (DEV)
 on:
   workflow_dispatch:
     inputs:
-      DEPLOY_APP_CUSTOMERS:
-        type: boolean
-        description: "(Customers) Enable customer app deployment"
-        default: true
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
   schedule:
     # Run once a day. 7PM UTC.
     - cron: "0 19 * * *"
