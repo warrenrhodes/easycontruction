@@ -1,0 +1,19 @@
+name: X Lib Deployment Apps Base Workflow
+
+on:
+  workflow_call:
+    inputs:
+      UPLOAD_TO_PLAY_STORE:
+        required: true
+        type: boolean
+        description: "True if the android appbundles should be uploaded to play store"
+    secrets:
+      GCP_CREDENTIALS_BASE64:
+        required: true
+        description: "GCP service account credentials in base64"
+jobs:
+  deploy-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - run: echo "${{ secrets.GCP_CREDENTIALS_BASE64 }}"
