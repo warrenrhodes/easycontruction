@@ -3,7 +3,7 @@ name: X Lib Deployment Apps Base Workflow
 on:
   workflow_call:
     inputs:
-      UPLOAD_TO_PLAY_STORE:
+      DEPLOY_IOS_APPS:
         required: true
         type: boolean
         description: "True if the android appbundles should be uploaded to play store"
