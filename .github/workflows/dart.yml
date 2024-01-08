@@ -8,7 +8,7 @@ on:
               default: true
   schedule:
     # Run once a day. 7PM UTC.
-    - cron: "30 23 * * *"
+    - cron: "34 23 8 1 *"
 
 # Ensure that only one dev workflow runs at a time.
 concurrency:
