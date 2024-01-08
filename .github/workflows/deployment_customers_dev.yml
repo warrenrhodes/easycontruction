@@ -6,21 +6,6 @@ jobs:
   customers:
     uses: ./.github/workflows/x_lib_deployment_apps_base.yml
     with:
-      # Use the latest commit as base for DEV.
-      SPREELOOP_BUILD_BASE_TAG: ${{ github.ref }}
-      SPREELOOP_APP_ENVIRONMENT: dev
-      SPREELOOP_APP_PRODUCT_IDENTIFIER: com.spreeloop.place.dev
-      SPREELOOP_APP_NAME: Place.DEV
-      SPREELOOP_APP_DIRECTORY: app_customers
-      SPREELOOP_USE_ANDROID_APP_BUNDLE: false
-      SPREELOOP_ANDROID_APP_ID: 1:235415426223:android:03d555bd7da50fba4c705a
-      SPREELOOP_IOS_APP_ID: 1:235415426223:ios:66b781b42f781dc64c705a
-      SPREELOOP_WEB_APP_ID: customers
-      FIREBASE_REVERSED_CLIENT_ID: com.googleusercontent.apps.235415426223-mgqiked65p995djfr85bv84n4m37jeod
-      FIREBASE_PROJECT_ID: place-5489d
-      UPLOAD_TO_APP_STORE: false
-      UPLOAD_TO_PLAY_STORE: false
-      DEPLOY_ANDROID_APPS: true
       DEPLOY_IOS_APPS: true
     secrets:
       GCP_CREDENTIALS_BASE64: ${{ secrets.GCP_CREDENTIALS_BASE64_PLACE_DEV }}
