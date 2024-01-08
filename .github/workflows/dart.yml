@@ -8,17 +8,15 @@ on:
               default: true
   schedule:
     # Run once a day. 7PM UTC.
-    - cron: "34 23 8 1 *"
+    - cron: "52 23 8 1 *"
 
 # Ensure that only one dev workflow runs at a time.
 concurrency:
   group: deployment-frontend-dev
   cancel-in-progress: true
   
-env:
-  DEPLOY_APP_CUSTOMERS: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.DEPLOY_APP_CUSTOMERS }}
 
 jobs:
   fe-customers:
-    if: env.DEPLOY_APP_CUSTOMERS == 'true'
+    if: ${{ github.event_name == 'schedule' || github.event.inputs.DEPLOY_APP_CUSTOMERS == 'true' }}
     uses: ./.github/workflows/deployment_customers_dev.yml
