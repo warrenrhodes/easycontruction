@@ -2,25 +2,22 @@ name: Deployment Frontend (DEV)
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-          - info
-          - warning
-          - debug
+      DEPLOY_APP_CUSTOMERS:
+              type: boolean
+              description: "(Customers) Enable customer app deployment"
+              default: true
   schedule:
     # Run once a day. 7PM UTC.
-    - cron: "0 19 * * *"
+    - cron: "23 0 * * *"
 
 # Ensure that only one dev workflow runs at a time.
 concurrency:
   group: deployment-frontend-dev
   cancel-in-progress: true
+env:
+ DEPLOY_APP_CUSTOMERS: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.DEPLOY_APP_CUSTOMERS }}
 
 jobs:
   fe-customers:
-    if: ${{ inputs.DEPLOY_APP_CUSTOMERS }}
+    if: env.DEPLOY_APP_CUSTOMERS == 'true'
     uses: ./.github/workflows/deployment_customers_dev.yml
