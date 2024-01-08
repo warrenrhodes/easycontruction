@@ -14,8 +14,9 @@ on:
 concurrency:
   group: deployment-frontend-dev
   cancel-in-progress: true
+  
 env:
- DEPLOY_APP_CUSTOMERS: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.DEPLOY_APP_CUSTOMERS }}
+  DEPLOY_APP_CUSTOMERS: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.DEPLOY_APP_CUSTOMERS }}
 
 jobs:
   fe-customers:
